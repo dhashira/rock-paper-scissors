@@ -1,0 +1,104 @@
+@font-face {
+    font-family: munro;
+    src: url(munro.ttf);
+}
+
+#fire-title {
+    font-family: munro; 
+    font-size: 90px; 
+    color: #FF8F28; 
+    position: fixed; 
+    top: -30px; 
+    left: 415px; 
+}
+
+#grass-title {
+    font-family: munro; 
+    font-size: 90px; 
+    color: #9ECB9E; 
+    position: fixed; 
+    top: -30px; 
+    left: 595px; 
+}
+
+#water-title {
+    font-family: munro; 
+    font-size: 90px; 
+    color: #67B7D2; 
+    position: fixed; 
+    top: -30px; 
+    left: 835px; 
+}
+
+#subtitle {
+    font-family: munro; 
+    font-size: 25px; 
+    color: black; 
+    position: fixed; 
+    top: 125px; 
+    left: 550px; 
+}
+
+#bulbasaur {
+    height: 320px; 
+    width: 420px;
+    position: fixed; 
+    top: 175px; 
+    left: 515px;  
+}
+
+#charmander {
+    height: 300px; 
+    width: 550px;
+    position: fixed; 
+    top: 155px; 
+    left: -80px;  
+}
+
+#squirtle {
+    height: 275px; 
+    width: 275px;
+    position: fixed; 
+    top: 190px; 
+    left: 1000px;  
+}
+
+#pokeball-1 {
+    height: 80px; 
+    width: 80px; 
+    position: relative; 
+    top: 30px; 
+    left: 305px; 
+}
+
+#pokeball-2 {
+    height: 80px; 
+    width: 80px; 
+    position: relative; 
+    top: 30px; 
+    left: 960px;
+}
+
+#left-box {
+    font-family: munro; 
+    font-size: 28px; 
+    position: fixed; 
+    top: 490px; 
+    left: 15px; 
+    height: 160px; 
+    width: 660px;
+    padding: 20px;
+    border: 5px solid gray;
+}
+
+#right-box {
+    font-family: munro; 
+    font-size: 28px; 
+    position: fixed; 
+    top: 490px; 
+    left: 745px; 
+    height: 160px; 
+    width: 630px;
+    padding: 20px;
+    border: 5px solid gray;
+}
