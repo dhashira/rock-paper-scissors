@@ -43,6 +43,7 @@ let randomNumber;
 let userWins = 0; 
 let gymLeaderWins = 0; 
 let tie; 
+let winner = 0; 
 
 const choices = [
     "fire",
@@ -63,13 +64,15 @@ function checkWinner(userWins, gymLeaderWins) {
     // Checks to see if the user got to 5 wins 
     if (userWins == 5)
     {
-        userVictoryDisplay.textContent = "Congratulations, you won! 🎉"; 
+        userVictoryDisplay.textContent = "Congratulations, you won! 🎉";
+        winner = 1; 
     }
         
     // Checks to see if the gym leader got to 5 wins 
     else if (gymLeaderWins == 5)
     {
         userLostDisplay.textContent = "Sorry, you lost... :("; 
+        winner = 1; 
     }
 }
 
@@ -142,7 +145,7 @@ function displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, ti
         {
             gymLeaderChoiceDisplay.textContent = "Gym Leader Chose: 💧"; 
         }
-        
+
         userWinsDisplay.textContent = "Your Wins: " + userWins; 
         gymLeaderWinsDisplay.textContent = "Gym Leader Wins: " + gymLeaderWins; 
         tieDisplay.textContent = "It's a tie this round!"; 
@@ -216,32 +219,41 @@ function compareChoices(userChoice, gymLeaderChoice) {
 function playGame() {
     // If user chooses fire...
     charmander.addEventListener("click", function() {
-        tieDisplay.textContent = " "; 
-        userChoice = "fire"; 
-        randomNumber = Math.floor(Math.random() * choices.length);
-        gymLeaderChoice = choices[randomNumber]; 
-        compareChoices(userChoice, gymLeaderChoice);
-        checkWinner(userWins, gymLeaderWins);  
+        if (winner == 0)
+        {
+            tieDisplay.textContent = " "; 
+            userChoice = "fire"; 
+            randomNumber = Math.floor(Math.random() * choices.length);
+            gymLeaderChoice = choices[randomNumber]; 
+            compareChoices(userChoice, gymLeaderChoice);
+            checkWinner(userWins, gymLeaderWins);  
+        }
     });
 
     // If user chooses grass... 
     bulbasaur.addEventListener("click", function() {
-        tieDisplay.textContent = " "; 
-        userChoice = "grass"; 
-        randomNumber = Math.floor(Math.random() * choices.length);
-        gymLeaderChoice = choices[randomNumber]; 
-        compareChoices(userChoice, gymLeaderChoice); 
-        checkWinner(userWins, gymLeaderWins);  
+        if (winner == 0)
+        {
+            tieDisplay.textContent = " "; 
+            userChoice = "grass"; 
+            randomNumber = Math.floor(Math.random() * choices.length);
+            gymLeaderChoice = choices[randomNumber]; 
+            compareChoices(userChoice, gymLeaderChoice); 
+            checkWinner(userWins, gymLeaderWins);  
+        }
     });
 
     // If user chooses water... 
     squirtle.addEventListener("click", function() {
-        tieDisplay.textContent = " "; 
-        userChoice = "water"; 
-        randomNumber = Math.floor(Math.random() * choices.length);
-        gymLeaderChoice = choices[randomNumber]; 
-        compareChoices(userChoice, gymLeaderChoice); 
-        checkWinner(userWins, gymLeaderWins);  
+        if (winner == 0)
+        {
+            tieDisplay.textContent = " "; 
+            userChoice = "water"; 
+            randomNumber = Math.floor(Math.random() * choices.length);
+            gymLeaderChoice = choices[randomNumber]; 
+            compareChoices(userChoice, gymLeaderChoice); 
+            checkWinner(userWins, gymLeaderWins);  
+        }
     });
 }
 
