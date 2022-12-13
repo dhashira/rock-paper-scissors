@@ -86,39 +86,41 @@
     font-family: munro; 
     font-size: 28px; 
     position: fixed; 
-    top: 490px; 
+    top: 470px; 
     left: 15px; 
     height: 160px; 
     width: 660px;
     padding: 20px;
     border: 5px solid gray;
+    border-radius: 20px; 
 }
 
 #right-box {
     font-family: munro; 
     font-size: 28px; 
     position: fixed; 
-    top: 490px; 
+    top: 470px; 
     left: 745px; 
     height: 160px; 
     width: 630px;
     padding: 20px;
     border: 5px solid gray;
+    border-radius: 20px; 
 }
 
 #tie-message {
     font-family: munro; 
     font-size: 35px; 
     position: fixed; 
-    top: 730px; 
-    left: 590px; 
+    top: 695px; 
+    left: 600px; 
 }
 
 #userwon-message {
     font-family: munro; 
     font-size: 35px; 
     position: fixed; 
-    top: 730px; 
+    top: 695px; 
     left: 540px; 
 }
 
@@ -126,6 +128,37 @@
     font-family: munro; 
     font-size: 35px; 
     position: fixed; 
-    top: 730px; 
+    top: 695px; 
     left: 610px; 
+}
+
+#restart-btn {
+    font-family: munro; 
+    font-size: 25px; 
+    background-color: gray; 
+    color: white; 
+    position: fixed; 
+    top: 760px; 
+    left: 650px; 
+    height: 30px; 
+    width: 150px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer; 
+}
+
+#restart-btn:hover {
+    font-family: munro; 
+    font-size: 25px; 
+    background-color: white; 
+    color: gray; 
+    position: fixed; 
+    top: 760px; 
+    left: 650px; 
+    height: 30px; 
+    width: 150px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer; 
+    
 }
