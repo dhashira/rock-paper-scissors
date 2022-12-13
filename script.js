@@ -37,12 +37,133 @@ squirtle.addEventListener("mouseout", function() {
     squirtle.setAttribute("src", "images/graysquirtle.png"); 
 });
 
-// If image is clicked on, playGame() 
+let userChoice; 
+let gymLeaderChoice; 
+let randomNumber; 
+let userWins = 0; 
+let gymLeaderWins = 0; 
+let tie; 
 
-// playGame() --> 
-// 1) Display what you chose 
-// 2) Display what the gym leader chose 
-// 3) Determine who won that round (compare())
-// 4) Update the number of wins you now have 
-// 5) Update the number of wins the gym leader has 
-// 6) Check to see if anyone has won 5 (checkWinner())
+const choices = [
+    "fire",
+    "grass", 
+    "water"
+];
+
+const userWinsDisplay = document.querySelector('#user-wins'); 
+const gymLeaderWinsDisplay = document.querySelector('#gymleader-wins'); 
+const userChoiceDisplay = document.querySelector('#user-choice'); 
+const gymLeaderChoiceDisplay = document.querySelector('#gymleader-choice'); 
+
+function display(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie) {
+
+    userWinsDisplay.textContent = "Your Wins: " + userWins; 
+    gymLeaderWinsDisplay.textContent = "Gym Leader Wins: " + gymLeaderWins; 
+    userChoiceDisplay.textContent = "You Chose: " + userChoice; 
+    gymLeaderChoiceDisplay.textContent = "Gym Leader Chose: " + gymLeaderChoice; 
+    
+}
+
+function compare(userChoice, gymLeaderChoice) {
+ 
+    // User wins 
+    if (userChoice == "fire" && gymLeaderChoice == "grass")
+    {
+        // Increment the number of user wins 
+        userWins++; 
+        tie = 0; 
+        display(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+    }
+
+    // User wins 
+    else if (userChoice == "grass" && gymLeaderChoice == "water")
+    {
+        // Increment the number of user wins 
+        userWins++; 
+        tie = 0; 
+        display(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+    }
+
+    // User wins 
+    else if (userChoice == "water" && gymLeaderChoice == "fire")
+    {
+        // Increment the number of user wins 
+        userWins++; 
+        tie = 0; 
+        display(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+    }
+
+    // Gym leader wins 
+    else if (gymLeaderChoice == "fire" && userChoice == "grass")
+    {
+        // Increment the number of gym leader wins
+        gymLeaderWins++; 
+        tie = 0; 
+        display(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+    }
+
+    // Gym leader wins
+    else if (gymLeaderChoice == "grass" && userChoice == "water")
+    {
+        // Increment the number of gym leader wins 
+        gymLeaderWins++; 
+        tie = 0; 
+        display(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+    }
+
+    // Gym leader wins 
+    else if (gymLeaderChoice == "water" && userChoice == "fire")
+    {
+        // Increment the number of gym leader wins 
+        gymLeaderWins++; 
+        tie = 0; 
+        display(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+    }
+
+    // Tie 
+    else 
+    {
+        tie = 1; 
+        display(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+    }
+}
+
+function playGame() {
+    // If user chooses fire...
+    charmander.addEventListener("click", function() {
+        userChoice = "fire"; 
+        randomNumber = Math.floor(Math.random() * choices.length);
+        gymLeaderChoice = choices[randomNumber]; 
+        compare(userChoice, gymLeaderChoice); 
+    });
+
+    // If user chooses grass... 
+    bulbasaur.addEventListener("click", function() {
+        userChoice = "grass"; 
+        randomNumber = Math.floor(Math.random() * choices.length);
+        gymLeaderChoice = choices[randomNumber]; 
+        compare(userChoice, gymLeaderChoice); 
+    });
+
+    // If user chooses water... 
+    squirtle.addEventListener("click", function() {
+        userChoice = "water"; 
+        randomNumber = Math.floor(Math.random() * choices.length);
+        gymLeaderChoice = choices[randomNumber]; 
+        compare(userChoice, gymLeaderChoice); 
+    });
+
+    // End the game 
+    if (userWins == 5)
+    {
+
+    }
+
+    // End the game 
+    else if (gymLeaderWins == 5)
+    {
+
+    }
+}
+
+playGame(); 
