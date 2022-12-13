@@ -77,14 +77,74 @@ function displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, ti
 
     if  (tie == 0)
     {
+        if (userChoice == "fire")
+        {
+            userChoiceDisplay.textContent = "You Chose: 🔥"; 
+        }
+
+        if (gymLeaderChoice == "fire")
+        {
+            gymLeaderChoiceDisplay.textContent = "Gym Leader Chose: 🔥"; 
+        }
+
+        if (userChoice == "grass")
+        {
+            userChoiceDisplay.textContent = "You Chose: 🍃"; 
+        }
+
+        if (gymLeaderChoice == "grass")
+        {
+            gymLeaderChoiceDisplay.textContent = "Gym Leader Chose: 🍃"; 
+        }
+        
+        if (userChoice == "water")
+        {
+            userChoiceDisplay.textContent = "You Chose: 💧"; 
+        }
+
+        if (gymLeaderChoice == "water")
+        {
+            gymLeaderChoiceDisplay.textContent = "Gym Leader Chose: 💧"; 
+        }
+
         userWinsDisplay.textContent = "Your Wins: " + userWins; 
         gymLeaderWinsDisplay.textContent = "Gym Leader Wins: " + gymLeaderWins; 
-        userChoiceDisplay.textContent = "You Chose: " + userChoice; 
-        gymLeaderChoiceDisplay.textContent = "Gym Leader Chose: " + gymLeaderChoice; 
     }
 
     else if (tie == 1)
     {
+        if (userChoice == "fire")
+        {
+            userChoiceDisplay.textContent = "You Chose: 🔥"; 
+        }
+
+        if (gymLeaderChoice == "fire")
+        {
+            gymLeaderChoiceDisplay.textContent = "Gym Leader Chose: 🔥"; 
+        }
+
+        if (userChoice == "grass")
+        {
+            userChoiceDisplay.textContent = "You Chose: 🍃"; 
+        }
+
+        if (gymLeaderChoice == "grass")
+        {
+            gymLeaderChoiceDisplay.textContent = "Gym Leader Chose: 🍃"; 
+        }
+        
+        if (userChoice == "water")
+        {
+            userChoiceDisplay.textContent = "You Chose: 💧"; 
+        }
+
+        if (gymLeaderChoice == "water")
+        {
+            gymLeaderChoiceDisplay.textContent = "Gym Leader Chose: 💧"; 
+        }
+        
+        userWinsDisplay.textContent = "Your Wins: " + userWins; 
+        gymLeaderWinsDisplay.textContent = "Gym Leader Wins: " + gymLeaderWins; 
         tieDisplay.textContent = "It's a tie this round!"; 
     }
 }
