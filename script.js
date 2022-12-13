@@ -53,18 +53,29 @@ const choices = [
 const userWinsDisplay = document.querySelector('#user-wins'); 
 const gymLeaderWinsDisplay = document.querySelector('#gymleader-wins'); 
 const userChoiceDisplay = document.querySelector('#user-choice'); 
-const gymLeaderChoiceDisplay = document.querySelector('#gymleader-choice'); 
+const gymLeaderChoiceDisplay = document.querySelector('#gymleader-choice');
 
-function display(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie) {
+const tieDisplay = document.querySelector('#tie-message'); 
+const userVictoryDisplay = document.querySelector('#userwon-message'); 
+const userLostDisplay = document.querySelector('#userlost-message'); 
 
-    userWinsDisplay.textContent = "Your Wins: " + userWins; 
-    gymLeaderWinsDisplay.textContent = "Gym Leader Wins: " + gymLeaderWins; 
-    userChoiceDisplay.textContent = "You Chose: " + userChoice; 
-    gymLeaderChoiceDisplay.textContent = "Gym Leader Chose: " + gymLeaderChoice; 
-    
+function displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie) {
+
+    if  (tie == 0)
+    {
+        userWinsDisplay.textContent = "Your Wins: " + userWins; 
+        gymLeaderWinsDisplay.textContent = "Gym Leader Wins: " + gymLeaderWins; 
+        userChoiceDisplay.textContent = "You Chose: " + userChoice; 
+        gymLeaderChoiceDisplay.textContent = "Gym Leader Chose: " + gymLeaderChoice; 
+    }
+
+    else if (tie == 1)
+    {
+        tieDisplay.textContent = "It's a tie this round!"; 
+    }
 }
 
-function compare(userChoice, gymLeaderChoice) {
+function compareChoices(userChoice, gymLeaderChoice) {
  
     // User wins 
     if (userChoice == "fire" && gymLeaderChoice == "grass")
@@ -72,7 +83,7 @@ function compare(userChoice, gymLeaderChoice) {
         // Increment the number of user wins 
         userWins++; 
         tie = 0; 
-        display(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
     }
 
     // User wins 
@@ -81,7 +92,7 @@ function compare(userChoice, gymLeaderChoice) {
         // Increment the number of user wins 
         userWins++; 
         tie = 0; 
-        display(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
     }
 
     // User wins 
@@ -90,7 +101,7 @@ function compare(userChoice, gymLeaderChoice) {
         // Increment the number of user wins 
         userWins++; 
         tie = 0; 
-        display(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
     }
 
     // Gym leader wins 
@@ -99,7 +110,7 @@ function compare(userChoice, gymLeaderChoice) {
         // Increment the number of gym leader wins
         gymLeaderWins++; 
         tie = 0; 
-        display(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
     }
 
     // Gym leader wins
@@ -108,7 +119,7 @@ function compare(userChoice, gymLeaderChoice) {
         // Increment the number of gym leader wins 
         gymLeaderWins++; 
         tie = 0; 
-        display(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
     }
 
     // Gym leader wins 
@@ -117,52 +128,55 @@ function compare(userChoice, gymLeaderChoice) {
         // Increment the number of gym leader wins 
         gymLeaderWins++; 
         tie = 0; 
-        display(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
     }
 
     // Tie 
     else 
     {
         tie = 1; 
-        display(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
     }
 }
 
 function playGame() {
     // If user chooses fire...
     charmander.addEventListener("click", function() {
+        tieDisplay.textContent = " "; 
         userChoice = "fire"; 
         randomNumber = Math.floor(Math.random() * choices.length);
         gymLeaderChoice = choices[randomNumber]; 
-        compare(userChoice, gymLeaderChoice); 
+        compareChoices(userChoice, gymLeaderChoice); 
     });
 
     // If user chooses grass... 
     bulbasaur.addEventListener("click", function() {
+        tieDisplay.textContent = " "; 
         userChoice = "grass"; 
         randomNumber = Math.floor(Math.random() * choices.length);
         gymLeaderChoice = choices[randomNumber]; 
-        compare(userChoice, gymLeaderChoice); 
+        compareChoices(userChoice, gymLeaderChoice); 
     });
 
     // If user chooses water... 
     squirtle.addEventListener("click", function() {
+        tieDisplay.textContent = " "; 
         userChoice = "water"; 
         randomNumber = Math.floor(Math.random() * choices.length);
         gymLeaderChoice = choices[randomNumber]; 
-        compare(userChoice, gymLeaderChoice); 
+        compareChoices(userChoice, gymLeaderChoice); 
     });
 
-    // End the game 
+    // Checks to see if the user got to 5 wins 
     if (userWins == 5)
     {
-
+        userVictoryDisplay.textContent = "Congratulations, you won! 🎉"; 
     }
-
-    // End the game 
+        
+    // Checks to see if the gym leader got to 5 wins 
     else if (gymLeaderWins == 5)
     {
-
+        userLostDisplay.textContent = "Sorry, you lost... :("; 
     }
 }
 
