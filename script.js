@@ -57,6 +57,7 @@ let userWins = 0;
 let gymLeaderWins = 0; 
 let tie; 
 let winner = 0; 
+let roundWin; 
 
 // Array that is used to pick a move for the gym leader 
 const choices = [
@@ -73,15 +74,24 @@ const gymLeaderChoiceDisplay = document.querySelector('#gymleader-choice');
 const tieDisplay = document.querySelector('#tie-message'); 
 const userVictoryDisplay = document.querySelector('#userwon-message'); 
 const userLostDisplay = document.querySelector('#userlost-message'); 
+const positiveDisplay = document.querySelector('#positive-message'); 
+const negativeDisplay = document.querySelector('#negative-message'); 
 
 // Checks to see if anyone has reached 5 wins 
 function checkWinner(userWins, gymLeaderWins) {
     // Checks to see if the user got to 5 wins 
     if (userWins == 5)
     {
+        // Ensures no other messages are in the way 
+        tieDisplay.textContent = " "; 
+        positiveDisplay.textContent = " "; 
+        negativeDisplay.textContent = " "; 
+
         userVictoryDisplay.textContent = "Congratulations, you won! 🎉";
+
         // Ends the game 
         winner = 1; 
+
         // Shows the restart button 
         restartButton.style.visibility = 'visible'; 
     }
@@ -89,9 +99,16 @@ function checkWinner(userWins, gymLeaderWins) {
     // Checks to see if the gym leader got to 5 wins
     else if (gymLeaderWins == 5)
     {
+        // Ensures no other messages are in the way 
+        tieDisplay.textContent = " "; 
+        positiveDisplay.textContent = " "; 
+        negativeDisplay.textContent = " "; 
+
         userLostDisplay.textContent = "Sorry, you lost... :("; 
+
         // Ends the game 
         winner = 1; 
+
         // Shows the restart button 
         restartButton.style.visibility = 'visible'; 
     }
@@ -134,6 +151,18 @@ function displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, ti
     userWinsDisplay.textContent = "Your Wins: " + userWins; 
     gymLeaderWinsDisplay.textContent = "Gym Leader Wins: " + gymLeaderWins; 
 
+    // Message for the user if they won a round 
+    if (roundWin == "user")
+    {
+        positiveDisplay.textContent = "WOW amazing! :0"; 
+    }
+
+    // Message for the user if they lost a round 
+    if (roundWin == "gymleader")
+    {
+        negativeDisplay.textContent = "Ouch... 🤕"; 
+    }
+
     // Special message for when it's a tie 
     if (tie == 1)
     {
@@ -148,7 +177,8 @@ function compareChoices(userChoice, gymLeaderChoice) {
     {
         userWins++; 
         tie = 0; 
-        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+        roundWin = "user"; 
+        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie, roundWin); 
     }
 
     // User wins 
@@ -156,7 +186,8 @@ function compareChoices(userChoice, gymLeaderChoice) {
     {
         userWins++; 
         tie = 0; 
-        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+        roundWin = "user"; 
+        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie, roundWin); 
     }
 
     // User wins 
@@ -164,7 +195,8 @@ function compareChoices(userChoice, gymLeaderChoice) {
     {
         userWins++; 
         tie = 0; 
-        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+        roundWin = "user"; 
+        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie, roundWin); 
     }
 
     // Gym leader wins 
@@ -172,7 +204,8 @@ function compareChoices(userChoice, gymLeaderChoice) {
     {
         gymLeaderWins++; 
         tie = 0; 
-        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+        roundWin = "gymleader"; 
+        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie, roundWin); 
     }
 
     // Gym leader wins
@@ -180,7 +213,8 @@ function compareChoices(userChoice, gymLeaderChoice) {
     {
         gymLeaderWins++; 
         tie = 0; 
-        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+        roundWin = "gymleader"; 
+        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie, roundWin); 
     }
 
     // Gym leader wins 
@@ -188,13 +222,15 @@ function compareChoices(userChoice, gymLeaderChoice) {
     {
         gymLeaderWins++; 
         tie = 0; 
-        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
+        roundWin = "gymleader"; 
+        displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie, roundWin); 
     }
 
     // Tie 
     else 
     {
         tie = 1; 
+        roundWin = "tie"; 
         displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie); 
     }
 }
@@ -207,6 +243,8 @@ function playGame() {
         if (winner == 0)
         {
             tieDisplay.textContent = " "; 
+            positiveDisplay.textContent = " "; 
+            negativeDisplay.textContent = " "; 
             userChoice = "fire"; 
 
             // Picks a random choice for the gym leader 
@@ -224,6 +262,8 @@ function playGame() {
         if (winner == 0)
         {
             tieDisplay.textContent = " "; 
+            positiveDisplay.textContent = " "; 
+            negativeDisplay.textContent = " "; 
             userChoice = "grass"; 
 
             // Picks a random choice for the gym leader 
@@ -241,6 +281,8 @@ function playGame() {
         if (winner == 0)
         {
             tieDisplay.textContent = " "; 
+            positiveDisplay.textContent = " "; 
+            negativeDisplay.textContent = " "; 
             userChoice = "water"; 
 
             // Picks a random choice for the gym leader 

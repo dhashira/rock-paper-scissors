@@ -160,5 +160,20 @@
     padding: 10px;
     border-radius: 8px;
     cursor: pointer; 
-    
+}
+
+#positive-message {
+    font-family: munro; 
+    font-size: 35px; 
+    position: fixed; 
+    top: 695px; 
+    left: 630px; 
+}
+
+#negative-message {
+    font-family: munro; 
+    font-size: 35px; 
+    position: fixed; 
+    top: 695px; 
+    left: 670px; 
 }
