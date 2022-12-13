@@ -59,6 +59,20 @@ const tieDisplay = document.querySelector('#tie-message');
 const userVictoryDisplay = document.querySelector('#userwon-message'); 
 const userLostDisplay = document.querySelector('#userlost-message'); 
 
+function checkWinner(userWins, gymLeaderWins) {
+    // Checks to see if the user got to 5 wins 
+    if (userWins == 5)
+    {
+        userVictoryDisplay.textContent = "Congratulations, you won! 🎉"; 
+    }
+        
+    // Checks to see if the gym leader got to 5 wins 
+    else if (gymLeaderWins == 5)
+    {
+        userLostDisplay.textContent = "Sorry, you lost... :("; 
+    }
+}
+
 function displayResults(userChoice, gymLeaderChoice, userWins, gymLeaderWins, tie) {
 
     if  (tie == 0)
@@ -146,7 +160,8 @@ function playGame() {
         userChoice = "fire"; 
         randomNumber = Math.floor(Math.random() * choices.length);
         gymLeaderChoice = choices[randomNumber]; 
-        compareChoices(userChoice, gymLeaderChoice); 
+        compareChoices(userChoice, gymLeaderChoice);
+        checkWinner(userWins, gymLeaderWins);  
     });
 
     // If user chooses grass... 
@@ -156,6 +171,7 @@ function playGame() {
         randomNumber = Math.floor(Math.random() * choices.length);
         gymLeaderChoice = choices[randomNumber]; 
         compareChoices(userChoice, gymLeaderChoice); 
+        checkWinner(userWins, gymLeaderWins);  
     });
 
     // If user chooses water... 
@@ -165,19 +181,8 @@ function playGame() {
         randomNumber = Math.floor(Math.random() * choices.length);
         gymLeaderChoice = choices[randomNumber]; 
         compareChoices(userChoice, gymLeaderChoice); 
+        checkWinner(userWins, gymLeaderWins);  
     });
-
-    // Checks to see if the user got to 5 wins 
-    if (userWins == 5)
-    {
-        userVictoryDisplay.textContent = "Congratulations, you won! 🎉"; 
-    }
-        
-    // Checks to see if the gym leader got to 5 wins 
-    else if (gymLeaderWins == 5)
-    {
-        userLostDisplay.textContent = "Sorry, you lost... :("; 
-    }
 }
 
 playGame(); 
